@@ -18,15 +18,22 @@ def roles():
                     "public health"]
 
     jobSeniority = ["p3",
-                        "p2",
-                        "mid level",
-                        "senior",
-                        "ip3",
-                        "ics 09",
-                        "ics 10",
-                        "gs-5",
-                        "gs-6",
-                        ]
+                    "p2",
+                    "mid",
+                    "senior",
+                    "iasc 09",
+                    "iasc 10",
+                    "iasc 11",
+                    "ics 09",
+                    "ics 10",
+                    "ics 11",
+                    "iasc-09",
+                    "iasc-10",
+                    "iasc-11",
+                    "ics-09",
+                    "ics-10",
+                    "ics-11",
+                    ]
 
     url = "https://www.impactpool.org/search?page=1&per_page=200"
     website = requests.get(url)
@@ -69,3 +76,14 @@ def roles():
                 "link":link
             })
     return information
+
+if __name__ == "__main__":
+    information = roles()
+
+    for entry in information:
+        print(entry["title"], "-", entry["location"])
+        print("Organization:", entry["organization"], ",  Seniority:", entry["seniority"])
+        print("Access Job on -->  " + entry["link"])
+        print()
+
+    print(f"{len(information)} jobs have matched the search!")
